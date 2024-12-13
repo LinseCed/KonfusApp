@@ -1,9 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'screens/home_screen.dart';
+import 'package:timezone/timezone.dart' as tz;
+import 'package:timezone/data/latest.dart' as tz;
+import 'services/notification_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  tz.initializeTimeZones();
+  await NotificationService.initialize();
+  NotificationService.scheduleNotification(
+      id: 1,
+      title: 'Scheduled Notification',
+      body: 'This is a scheduled Notification',
+      scheduledDate: DateTime.now().add(Duration(seconds: 10)));
   runApp(const KonfusApp());
 }
 

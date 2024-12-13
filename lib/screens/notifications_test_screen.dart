@@ -15,8 +15,7 @@ class NotificationsTestScreen extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             ElevatedButton(
-              onPressed: () {
-                NotificationService.showNotification(
+              onPressed: () {                NotificationService.showNotification(
                     id: 0,
                     title: 'Test Notification',
                     body: 'This is a test Notification');
@@ -26,7 +25,7 @@ class NotificationsTestScreen extends StatelessWidget {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                NotificationService.scheduleNotificaiton(
+                NotificationService.scheduleNotification(
                     id: 1,
                     title: 'Scheduled Notification',
                     body: 'This is a scheduled Notification',
