@@ -78,7 +78,7 @@ class EventsScreenState extends State<EventsScreen> {
             return RefreshIndicator(
               onRefresh: () async {
                 _fetchEvents();
-                await _eventsFuture; // Wait for the fetch to complete
+                await _eventsFuture;
               },
               child: ListView.builder(
                 itemCount: events.length,

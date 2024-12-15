@@ -20,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
     EventCalendarScreen(),
     const NotificationsTestScreen(),
     const ScheduledNotificationsScreen(),
-    SettingsScreen(),
+    const SettingsScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -57,7 +57,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.black,
         onTap: _onItemTapped,
       ),
     );

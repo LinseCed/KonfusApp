@@ -6,21 +6,22 @@ import 'package:permission_handler/permission_handler.dart';
 
 class NotificationService {
   static final FlutterLocalNotificationsPlugin _notificationsPlugin =
-  FlutterLocalNotificationsPlugin();
+      FlutterLocalNotificationsPlugin();
 
   /// Initializes the notification service and sets up notification channels for Android.
   static Future<void> initialize() async {
     const AndroidInitializationSettings initializationSettingsAndroid =
-    AndroidInitializationSettings('@drawable/app_icon');
+        AndroidInitializationSettings('@drawable/app_icon');
 
     const DarwinInitializationSettings initializationSettingsDarwin =
-    DarwinInitializationSettings(
+        DarwinInitializationSettings(
       requestAlertPermission: true,
       requestBadgePermission: true,
       requestSoundPermission: true,
     );
 
-    const InitializationSettings initializationSettings = InitializationSettings(
+    const InitializationSettings initializationSettings =
+        InitializationSettings(
       android: initializationSettingsAndroid,
       iOS: initializationSettingsDarwin,
     );
@@ -37,15 +38,15 @@ class NotificationService {
       }
 
       final androidPlugin =
-      _notificationsPlugin.resolvePlatformSpecificImplementation<
-          AndroidFlutterLocalNotificationsPlugin>();
+          _notificationsPlugin.resolvePlatformSpecificImplementation<
+              AndroidFlutterLocalNotificationsPlugin>();
 
       if (androidPlugin != null) {
         // Request exact alarm permission for Android 12+ (API 31+)
-          final granted = await androidPlugin.requestExactAlarmsPermission();
-          if (granted != true) {
-            print("Exact alarms permission denied.");
-          }
+        final granted = await androidPlugin.requestExactAlarmsPermission();
+        if (granted != true) {
+          print("Exact alarms permission denied.");
+        }
 
         // Create notification channel
         await androidPlugin.createNotificationChannel(
@@ -85,7 +86,7 @@ class NotificationService {
         ),
         androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
         uiLocalNotificationDateInterpretation:
-        UILocalNotificationDateInterpretation.absoluteTime,
+            UILocalNotificationDateInterpretation.absoluteTime,
       );
       print("Notification scheduled for $scheduledDate");
     } catch (e) {
