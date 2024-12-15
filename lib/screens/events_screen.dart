@@ -25,6 +25,41 @@ class EventsScreenState extends State<EventsScreen> {
     });
   }
 
+  void _showEventDetails(Event event) {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.black87,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (context) {
+        return Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                event.title,
+                style: const TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              const SizedBox(height: 10),
+              Text(
+                "Date: ${DateTime.parse(event.date).day}.${DateTime.parse(event.date).month}.${DateTime.parse(event.date).year}",
+                style: const TextStyle(color: Colors.white),
+              ),
+              const SizedBox(height: 20),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,6 +90,7 @@ class EventsScreenState extends State<EventsScreen> {
                     leading: Icon(Icons.event),
                     title: Text(event.title),
                     subtitle: Text(date),
+                    onTap: () => _showEventDetails(event),
                   );
                 },
               ),

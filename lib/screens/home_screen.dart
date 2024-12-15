@@ -3,6 +3,7 @@ import 'package:konfus_app/screens/event_calendar_screen.dart';
 import 'package:konfus_app/screens/events_screen.dart';
 import 'package:konfus_app/screens/notifications_test_screen.dart';
 import 'package:konfus_app/screens/scheduled_notifications_screen.dart';
+import 'package:konfus_app/screens/settings_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -19,6 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
     EventCalendarScreen(),
     const NotificationsTestScreen(),
     const ScheduledNotificationsScreen(),
+    SettingsScreen(),
   ];
 
   void _onItemTapped(int index) {
@@ -49,10 +51,13 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: Icon(Icons.notifications),
             label: 'Scheduled Notifications',
           ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Einstellungen',
+          ),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.black,
-        unselectedItemColor: Colors.black,
         onTap: _onItemTapped,
       ),
     );
